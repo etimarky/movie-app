@@ -1,5 +1,5 @@
 {
-  "name": "hello-world",
+  "name": "movie-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
   "dependencies": {
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue-tables-2": "^2.3.3",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
