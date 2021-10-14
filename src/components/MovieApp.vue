@@ -5,7 +5,7 @@
       For a guide on how to use this app,<br>
       check out the instructions tab.
     </p>
-    <mytable>{{data}}</mytable>
+    <MyTable></MyTable>
     <!-- <h3>Installed CLI Plugins</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
@@ -31,12 +31,12 @@
 </template>
 
 <script>
-// import MyTable from 'Table.vue'
+ import MyTable from './Table.vue'
 export default {
   name: 'HelloWorld',
-  // components: {
-  //   mytable: MyTable
-  // },
+  components: {
+    MyTable
+  },
   props: {
     msg: String,
     // data: Array
