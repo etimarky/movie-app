@@ -6,10 +6,8 @@
       check out the instructions tab.
     </p>
     <MyTable :headers="headers" :info="data" />
-    <!-- <div>
-      <h1>{{ data }}
-        </h1>
-    </div> -->
+    <h2>
+      </h2>
   </div>
 </template>
 
@@ -21,11 +19,6 @@ export default {
   components: {
     MyTable,
   },
-  // data: function() {
-  //   return {
-  //     headers: ['imdbID', 'tmdbID', 'imdbRating']
-  //   }
-  // },
   props: {
     msg: String,
     data: Object,
@@ -36,7 +29,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
+h2 {
   margin: 40px 0 0;
 }
 ul {

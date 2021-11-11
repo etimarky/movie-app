@@ -27,22 +27,23 @@ export default {
       headers: Array,
     };
   },
-  // props: {
-  //   headers:
-  // },
   components: {
     MovieApp,
   },
   async mounted() {
-    let res = await axios.get("http://localhost:8080/");
+    let res = await axios.get("http://localhost:8080/movies");
     this.headers = [
       "title",
-      "first year aired",
-      "imdbID",
-      "tmdbID",
-      "imdbRating",
-      "countries",
-      "year",
+     "imdbID",
+     "tmdbID",
+     "imdbRating",
+     "genres",
+     "countries",
+     "year",
+     "runtime",
+     "age",
+     "streamingInfo",
+     "originalLanguage"
     ];
     return (this.info = res.data);
   },
