@@ -6,7 +6,7 @@
           :src="require('../assets/movie-logo.png')"
           class="my-3"
           contain
-          height="200"
+          height="100"
         />
       </v-col>
 
