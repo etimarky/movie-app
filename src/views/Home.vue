@@ -1,12 +1,7 @@
 <template>
   <div class="home">
-    <v-col class="text-right">
-      <v-btn class="pink white--text">
-        <v-icon text left small>mdi-email</v-icon>
-        <span>contact me</span>
-      </v-btn>
-    </v-col>
-    <movie-app />
+   
+    <movie-app selectedRows="selectedRows"/>
     <v-card>
       <v-card-title>
         <v-text-field
@@ -17,25 +12,32 @@
           hide-details
         ></v-text-field>
       </v-card-title>
-      </v-card>
       <v-data-table
-        v-model="selected"
+        :search="search"
         :headers="headers"
         :items="movies"
-        :single-select="singleSelect"
-        :search="search"
-        item-key="name"
-        show-select
+        item-key="imdbID"
+        v-model="selectedRows"
         class="elevation-1"
       >
-        <template v-slot:top>
-          <v-switch
-            v-model="singleSelect"
-            label="Single select"
-            class="pa-3"
-          ></v-switch>
+        <template v-slot:item="{ item }">
+          <tr
+            :class="selectedRows.indexOf(item.id) > -1 ? 'orange' : ''"
+            @click="rowClicked(item)"
+          >
+            <td>{{ item.title }}</td>
+            <td>{{ item.imdbID }}</td>
+            <td>{{ item.tmdbID }}</td>
+            <td>{{ item.imdbRating }}</td>
+            <td>{{ item.genres }}</td>
+            <td>{{ item.year }}</td>
+            <td>{{ item.runtime }}</td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.originalLanguage }}</td>
+          </tr>
         </template>
       </v-data-table>
+    </v-card>
   </div>
 </template>
 
@@ -52,7 +54,7 @@ export default {
   data: () => ({
     search: "",
     singleSelect: false,
-    selected: [],
+    selectedRows: [],
     movies: [],
     headers: [],
   }),
@@ -68,10 +70,26 @@ export default {
       { text: "year", value: "year" },
       { text: "runtime", value: "runtime" },
       { text: "age", value: "age" },
-      // {text: "streamingInfo", value: "streamingInfo"},
+      // streamingInfo removed
       { text: "originalLanguage", value: "originalLanguage" },
     ];
     return (this.movies = res.data.message);
+  },
+  methods: {
+    rowClicked(row) {
+      this.toggleSelection(row.id);
+      console.log(row);
+      // await axios.post("http://localhost:8081/selected", row)
+    },
+    toggleSelection(keyID) {
+      if (this.selectedRows.includes(keyID)) {
+        this.selectedRows = this.selectedRows.filter(
+          (selectedKeyID) => selectedKeyID !== keyID
+        );
+      } else {
+        this.selectedRows.push(keyID);
+      }
+    },
   },
 };
 </script>

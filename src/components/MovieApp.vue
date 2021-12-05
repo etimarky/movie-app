@@ -1,7 +1,8 @@
 <template>
   <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
+    <v-row>
+      <v-col cols="auto">
+        <h1 class="text-center">Movie Searching App</h1>
         <v-img
           :src="require('../assets/movie-logo.png')"
           class="my-3"
@@ -9,28 +10,33 @@
           height="100"
         />
       </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Movie Searching App
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For more information on this page, please go to the instructions tab.
-        </p>
+      <v-col>
+        <v-card>This is my table </v-card>
       </v-col>
-   
-    
+      <!-- <v-col width="100px">
+          <v-subheader>Wish List</v-subheader>
+          <v-data-table
+            :headers="headers"
+            :items="selectedRows"
+            class="elevation-1"
+          ></v-data-table> -->
     </v-row>
   </v-container>
 </template>
 
 <script>
-  export default {
-    name: 'MovieApp',
+export default {
+  name: "MovieApp",
 
-    data: () => ({
-     
-    }),
-  }
+  data: () => ({
+    headers: [],
+    selectedRows: [],
+  }),
+  mounted() {
+    this.headers = [
+      { text: "title", value: "title", align: "start", sortable: false },
+    ];
+    return (this.headers = this.headers);
+  },
+};
 </script>
